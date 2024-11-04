@@ -1,0 +1,65 @@
+Parte 1
+¿Qué ventajas y desventajas tiene la ejecucuión de programas de manera síncrona versus asíncrona?
+
+En este caso, el programa se ejecuta de manera síncrona, lo que hace que el programa siempre se ejecute de la misma forma, y por tanto
+se puede predecir el resultado. El punto negativo de la síncronia en este caso es que hasta que el usuario no completa la lista de procesos
+o no escribe la palabra clave, el programa se queda en espera y no se aprovechan los recursos.
+Si se ejecutara de manera asíncrona, el programa no quedaría bloqueado, pero por este mismo motivo el resultado podría ser inesperado ya que
+puede que el usuario no haya introducido la lista completa de procesos que quiere ver
+
+Por que es importante manejar las excepciones al trabajar con procesos
+
+En general siempre es importante manejar las excepciones ya que impiden el flujo normal del programa, en el caso de los procesos, se pueden
+generar excepciones al intentar acceder o modificar procesos protegidos por el sistema, al intentar acceder a un programa que no existe, o que esté
+en estado zombie
+
+¿Qué tipo de problemas se pueden presentar al comunicarse entre procesos? ¿Cómo los has solucionado?
+En este caso no han ocurrido problemas de comunicacion entre procesos
+
+Parte 2
+¿Qué ventajas y desventajas tiene la ejecucuión de programas de manera síncrona versus asíncrona?
+En este caso, el programa se ejecuta de manera sincrona, lo que permite que siempre se conozca el resultado final, si se ejecutara de manera asíncrona, podrían aparecer resultados inesperados por los cierres y aperturas de los flujos de la pipe
+
+
+Por que es importante manejar las excepciones al trabajar con procesos
+En este caso no se manejan excepciones ya que al trabajar de forma síncrona, la apertura y cierre de flujos se controla bien, pero podrían ocurrir excepciones si se intenta leer o escribir en la pipe cuando el flujo está cerrado
+ 
+
+¿Qué tipo de problemas se pueden presentar al comunicarse entre procesos? ¿Cómo los has solucionado?
+Al trabajar la comunicación de dos procesos mediante pipes, pueden ocurrir problemas relacionados con los flujos, si no se controla la apertura y cierre de estos correctamente, el programa puede fallar
+Para arreglar este problema, hay que asegurar que los flujos están abiertos antes de usarse, y cerrarlos cuando ya no se vayan a usar más
+
+Parte 3
+¿Qué ventajas y desventajas tiene la ejecución de programas de manera síncrona versus asíncrona?
+
+En este caso, el programa permite al usuario ejecutar el bloc de notas de manera síncrona o asíncrona según lo que prefiera.
+Al optar por la ejecución sincrona, el programa se queda en esoera hasta que el bloc de notas se cierre, lo que garantiza que el usuario pueda escribir en el bloc antes de cerrarse. 
+Sin embargo, esto también significa que el programa no podrá realizar otras tareas mientras espera, esto podría ser poco eficiente 
+Por otro lado, si se opta por la ejecución asíncrona,el programa continua mientras el bloc de notas está abierto, mejorando la eficiencia.
+El problema es que esto podría dar lugar a comportamientos inesperados
+
+Por que es importante manejar las excepciones al trabajar con procesos
+En este caso, solo se controlan las excepciones a la hora de crear el subproceso. Estas excepciones se pueden dar al intentar lanzar un proceso que no existe
+
+¿Qué tipo de problemas se pueden presentar al comunicarse entre procesos? ¿Cómo los has solucionado?
+En este caso no han aparecido problemas en la comunicación de procesos
+Parte 4
+¿Qué ventajas y desventajas tiene la ejecución de programas de manera síncrona versus asíncrona?
+En este caso el programa siempre se ejeucta de manera síncrona. 
+En este programa es esencial que exista sincronía ya que se necesita que el archivo del servidor ftp se descargue correctamente antes de seguir con el programa,
+si se ejecutara de manera asíncrona, el programa podría continuar sin el archivo descargado y como consecuencia aparecerían errores
+
+Por que es importante manejar las excepciones al trabajar con procesos
+En este caso se controla una excepción que controla si el archivo existe, podría darse el caso de que el archivo no se haya descargado y por tanto afectaría al flujo normal del programa
+
+¿Qué tipo de problemas se pueden presentar al comunicarse entre procesos? ¿Cómo los has solucionado?
+Pueden aparecer problemas en la manipulación del portapapeles, ya que al trabajar con flujos de lectura y escritura, se puede dar el caso de que
+se intenta acceder a información no disponible porque el flujo esté cerrado o que no se pueda escribir en el portapapeles por este mismo motivo.
+Con un buen control de la apertura y cierre de flujos, estos problemas no deberían ocurrir
+
+
+
+
+
+
+
