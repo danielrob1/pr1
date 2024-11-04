@@ -4,8 +4,9 @@ import sys
 
 # Se crea la pipe
 fd =os.pipe()
-# Se crea el mensaje que va a enviar el padre
-mensaje = "Soy el padre, le mando este mensaje a mi hijo"
+# Se lee el mensaje que va a enviar el padre
+with open("archivo.txt","r") as archivo:
+    mensaje = archivo.read()
 # Se crea el nuevo proceso con fork
 pid= os.fork()
 # Se comprueba si estamos en el proceso padre o hijo
@@ -22,8 +23,11 @@ elif pid==0:
     # El hijo acaba de leer, se cierra la lectura
     os.close(fd[0])
     print("El hijo ha recibido el mensaje:", buffer)
+    # El hijo lee el numero de lineas y palabras del mensaje
+    numeroLineas=len(buffer.splitlines())
+    numeroPalabras=len(buffer.split(""))
     # El hijo modifica el mensaje del padre
-    mensaje_modificado = buffer.upper()
+    mensaje_modificado = "En el fichero hay "+ str(numeroLineas) + " lineas y " +  str(numeroPalabras) + " palabras"
     # El hijo escribe el mensaje modificado en el pipe
     os.write(fd[1], mensaje_modificado.encode("utf-8"))
     # El hijo acaba de escribir, se cierra la escritura
